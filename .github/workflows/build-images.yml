@@ -14,7 +14,6 @@ jobs:
 
       - name: install buildx
         id: buildx
-        #uses: crazy-max/ghaction-docker-buildx@v1
         uses: crazy-max/ghaction-docker-buildx@v3.3.1
         with:
           version: latest
@@ -23,7 +22,6 @@ jobs:
         run: echo "${{ secrets.DOCKER_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: build the image
-        #run: docker buildx build --push --tag slaesh/wpantund:latest --platform linux/amd64,linux/arm/v7,linux/arm64 .
-        run: docker buildx build --push --tag slaesh/wpantund:latest --platform linux/amd64 .
+        run: docker buildx build --push --tag slaesh/wpantund:latest --platform linux/amd64,linux/arm/v7,linux/arm64 .
 
 # EOF
