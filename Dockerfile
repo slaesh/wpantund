@@ -11,7 +11,8 @@ RUN apt-get -y update \
     && apt-get autoremove --yes \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-RUN ls -la
+WORKDIR /wpantund
+COPY . .
 RUN ./bootstrap.sh && ./configure --sysconfdir=/etc
 RUN make -j4 && make install
 
