@@ -11,6 +11,7 @@ RUN apt-get -y update \
     && apt-get autoremove --yes \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
+RUN ls -la
 RUN ./bootstrap.sh && ./configure --sysconfdir=/etc
 RUN make -j4 && make install
 
