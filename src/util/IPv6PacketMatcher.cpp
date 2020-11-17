@@ -519,6 +519,8 @@ nl::dump_inbound_ipv6_packet(const uint8_t* packet, ssize_t len, const char* ext
 
 	ipv6_add_extra_description(type_extra, sizeof(type_extra), packet, len);
 
+	// CHECK IF WE CAN LOG RSSI ??!
+
 	syslog(LOG_INFO,
 		   "[NCP->] IPv6 len:%d type:%d%s [%s]%s",
 		   (int)len,

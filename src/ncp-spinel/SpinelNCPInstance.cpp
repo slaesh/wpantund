@@ -831,6 +831,7 @@ unpack_mac_allowlist_entries(const uint8_t *data_in, spinel_size_t data_len, boo
 
 	while (data_len > 0)
 	{
+		// looks interesting!
 		len = spinel_datatype_unpack(
 			data_in,
 			data_len,

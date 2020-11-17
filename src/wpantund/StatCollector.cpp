@@ -870,6 +870,12 @@ StatCollector::LinkStat::LinkQuality::LinkQuality()
 void
 StatCollector::LinkStat::LinkQuality::set(int8_t rssi, uint8_t incoming_link_quality, uint8_t outgoing_link_quality)
 {
+	// seems like it is not fired once??
+	syslog(LOG_INFO,
+		   "LinkQuality::set %d, %d, %d",
+			rssi, incoming_link_quality, outgoing_link_quality
+	);
+
 	mRssi = rssi;
 	mLinkQualityIncomingOutgoing = ((incoming_link_quality & 0x0f) << 4) + (outgoing_link_quality & 0x0f);
 	mTimeStamp.set_to_now();

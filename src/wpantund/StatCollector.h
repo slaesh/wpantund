@@ -38,25 +38,27 @@
 namespace nl {
 namespace wpantund {
 
+#define MAX_DEVICES (128) // i am still not sure if this is the device limitation.. original was 64 !
+
 // Size of the rx/tx history (for all nodes)
-#define STAT_COLLECTOR_RX_HISTORY_SIZE        64
-#define STAT_COLLECTOR_TX_HISTORY_SIZE        64
+#define STAT_COLLECTOR_RX_HISTORY_SIZE        MAX_DEVICES
+#define STAT_COLLECTOR_TX_HISTORY_SIZE        MAX_DEVICES
 
 // Size of the NCP state history
-#define STAT_COLLECTOR_NCP_STATE_HISTORY_SIZE 64
+#define STAT_COLLECTOR_NCP_STATE_HISTORY_SIZE MAX_DEVICES
 
 // Size of the NCP "ReadyForHostSleep" state history
-#define STAT_COLLECTOR_NCP_READY_FOR_HOST_SLEEP_STATE_HISTORY_SIZE  64
+#define STAT_COLLECTOR_NCP_READY_FOR_HOST_SLEEP_STATE_HISTORY_SIZE  MAX_DEVICES
 
 // Max number of nodes to track at the same time (nodes are tracked by IP address)
-#define STAT_COLLECTOR_MAX_NODES   64
+#define STAT_COLLECTOR_MAX_NODES   MAX_DEVICES
 
 // Size of rx/tx history per node
 #define STAT_COLLECTOR_PER_NODE_RX_HISTORY_SIZE  5
 #define STAT_COLLECTOR_PER_NODE_TX_HISTORY_SIZE  5
 
 // Maximm number of peer nodes for which we store link quality
-#define STAT_COLLECTOR_MAX_LINKS   64
+#define STAT_COLLECTOR_MAX_LINKS   MAX_DEVICES
 
 // History length of link quality info per peer
 #define STAT_COLLECTOR_LINK_QUALITY_HISTORY_SIZE 40

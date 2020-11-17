@@ -1024,6 +1024,18 @@ open_super_socket(const char* socket_name)
 				syslog(LOG_ERR, "Unknown option (%s)", options);
 			}
 		}
+
+		syslog(LOG_INFO, ">>>>> SETTING RTS falsy", options);
+		syslog(LOG_INFO, ">>>>> SETTING DTR truthy", options);
+
+		int RTS_flag, DTR_flag;
+
+		RTS_flag = TIOCM_RTS; /* Modem Constant for RTS pin */
+		DTR_flag = TIOCM_DTR; /* Modem Constant for DTR pin */
+
+		ioctl(fd,TIOCMBIC,&DTR_flag);
+		ioctl(fd,TIOCMBIC,&RTS_flag);
+		
 	}
 bail:
 	free(filename);
