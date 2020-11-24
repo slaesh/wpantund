@@ -16,4 +16,5 @@ COPY . .
 RUN ./bootstrap.sh && ./configure --sysconfdir=/etc
 RUN make -j4 && make install
 
-CMD /usr/local/sbin/wpantund -o Config:NCP:SocketPath /dev/ttyUSB0 -o Daemon:SyslogMask "all -debug"
+#CMD /usr/local/sbin/wpantund -o Config:NCP:SocketPath /dev/ttyUSB0 -o Daemon:SyslogMask "all"
+CMD ./init_and_start.sh
