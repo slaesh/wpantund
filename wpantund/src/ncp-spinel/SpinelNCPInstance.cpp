@@ -758,6 +758,9 @@ unpack_commissioner_joiners(const uint8_t *data_in, spinel_size_t data_len, boos
 			break;
 		}
 
+		// lets log something here!
+		syslog(LOG_INFO, ">>>>> SOME1 JOINED?");
+
 		if (any_joiner) {
 			 snprintf(c_string, sizeof(c_string), "any joiner, psk:%s, timeout:%.2f", joiner_pskd, joiner_timeout/1000.0);
 
@@ -5554,6 +5557,8 @@ SpinelNCPInstance::handle_ncp_spinel_value_is(spinel_prop_key_t key, const uint8
 
 		SpinelNCPTaskGetNetworkTopology::parse_child_table(value_data_ptr, value_data_len, child_table);
 
+		// lets log something
+
 		for (it = child_table.begin(); it != child_table.end(); it++)
 		{
 			num_children++;
@@ -5711,6 +5716,8 @@ SpinelNCPInstance::handle_ncp_spinel_value_inserted(spinel_prop_key_t key, const
 
 		status = SpinelNCPTaskGetNetworkTopology::parse_child_entry(value_data_ptr, value_data_len, child_entry);
 
+		// UUUH.. lets log something!
+
 		if (status == kWPANTUNDStatus_Ok) {
 			syslog(LOG_INFO, "[-NCP-]: ChildTable entry added: %s", child_entry.get_as_string().c_str());
 		}
@@ -5795,6 +5802,8 @@ SpinelNCPInstance::handle_ncp_spinel_value_removed(spinel_prop_key_t key, const 
 		int status;
 
 		status = SpinelNCPTaskGetNetworkTopology::parse_child_entry(value_data_ptr, value_data_len, child_entry);
+
+		// UUUH, lets log something!
 
 		if (status == kWPANTUNDStatus_Ok) {
 			syslog(LOG_INFO, "[-NCP-]: ChildTable entry removed: %s", child_entry.get_as_string().c_str());

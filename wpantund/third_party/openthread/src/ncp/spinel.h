@@ -2135,6 +2135,7 @@ enum
      *  `c`: Last RSSI (in dBm)
      *
      */
+    // SEARCH WHERE THIS IS USED - done
     SPINEL_PROP_THREAD_CHILD_TABLE = SPINEL_PROP_THREAD__BEGIN + 2,
 
     /// Thread Leader Router Id
@@ -2363,6 +2364,7 @@ enum
      *  `c`: The last RSSI (in dBm)
      *
      */
+    // SEARCH WHERE THIS IS USED
     SPINEL_PROP_THREAD_NEIGHBOR_TABLE = SPINEL_PROP_THREAD_EXT__BEGIN + 11,
 
     /// Thread Max Child Count
@@ -2652,6 +2654,7 @@ enum
      *  `A(6)`: List of IPv6 addresses registered by the child (if any)
      *
      */
+    // SEARCH WHERE THIS IS USED!!
     SPINEL_PROP_THREAD_CHILD_TABLE_ADDRESSES = SPINEL_PROP_THREAD_EXT__BEGIN + 33,
 
     /// Neighbor Table Frame and Message Error Rates

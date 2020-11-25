@@ -84,6 +84,9 @@ nl::wpantund::SpinelNCPTaskGetNetworkTopology::parse_table(
 
 	table.clear();
 
+	// lets log something here
+	syslog(LOG_INFO, "parse_table %d", data_len);
+
 	while (data_len > 0) {
 		spinel_ssize_t len = 0;
 		const uint8_t *struct_data;
@@ -99,6 +102,8 @@ nl::wpantund::SpinelNCPTaskGetNetworkTopology::parse_table(
 		);
 
 		require_action(len > 0, bail, ret = kWPANTUNDStatus_Failure);
+
+		syslog(LOG_INFO, "parse_table::type %d", type);
 
 		switch (type)
 		{
