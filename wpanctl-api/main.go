@@ -26,6 +26,7 @@ func main() {
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.Use(middleware.CORS())
 
 	// Route => handler
 	e.GET("/", func(c echo.Context) error {
@@ -41,7 +42,7 @@ func main() {
 		return c.String(http.StatusOK, string(output))
 	})
 
-	e.POST("/wpanctl", func(c echo.Context) error {
+	e.POST("/wpanctl/cmd", func(c echo.Context) error {
 
 		cmdToExec := new(CommandToExecute)
 		if err := c.Bind(&cmdToExec); err != nil {
