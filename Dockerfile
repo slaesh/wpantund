@@ -3,9 +3,9 @@ FROM ubuntu AS builder
 RUN apt-get -y update \
     && DEBIAN_FRONTEND=noninteractive \
     && apt-get -y -q --no-install-recommends install git \
-         dbus \
-         gcc g++ libdbus-1-dev libboost-dev \
-         libtool automake make autoconf autoconf-archive ca-certificates \
+    dbus \
+    gcc g++ libdbus-1-dev libboost-dev \
+    libtool automake make autoconf autoconf-archive ca-certificates \
     && dpkg-reconfigure dbus \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
@@ -30,7 +30,7 @@ FROM ubuntu AS production
 RUN apt-get -y update \
     && DEBIAN_FRONTEND=noninteractive \
     && apt-get -y -q --no-install-recommends install \
-         dbus \
+    dbus \
     && dpkg-reconfigure dbus \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
@@ -47,4 +47,4 @@ COPY --from=builder /usr/local/share/man /usr/local/share/man
 COPY --from=builder /wpanctl-api/wpanctl-api.server /wpanctl-api/wpanctl-api.server
 
 COPY ./init_and_start.sh /
-ENTRYPOINT ["/init_and_start.sh"]
+CMD ./init_and_start.sh
