@@ -47,4 +47,4 @@ COPY --from=builder /usr/local/share/man /usr/local/share/man
 COPY --from=builder /wpanctl-api/wpanctl-api.server /wpanctl-api/wpanctl-api.server
 
 COPY ./init_and_start.sh /
-CMD /init_and_start.sh
+ENTRYPOINT ["/init_and_start.sh"]
